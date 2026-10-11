@@ -1,0 +1,102 @@
+/* ============================================================
+   fonts.css — типографические скоупы (data-rfs-font-scope).
+
+   Переменные exist только при scope ≠ off:
+   --rfs-font-stack (выбранный стек, иначе темный --rfs-font-family),
+   --rfs-base-size (измеренный кегль форума, напр. 15px),
+   --rfs-font-scale, --rfs-font-weight, --rfs-font-line,
+   --rfs-font-track.
+
+   Скоупы:
+   - ui             — только интерфейс (навигация, блоки, кнопки,
+                      формы, заголовки); НЕ .bbWrapper и
+                      НЕ .message-content.
+   - all            — вся страница, включая посты.
+   - allExceptPosts — вся страница, но .bbWrapper сбрасывается
+                      к исходной типографике форума.
+
+   Кегль задаём с !important на контейнерах: форум задаёт явные
+   px-размеры, которые иначе перебивают наследование.
+   ============================================================ */
+
+/* --- 1. Контейнеры интерфейса (все скоупы) -------------------------- */
+
+html[data-rfs-font-scope] .p-navTop,
+html[data-rfs-font-scope] .p-nav,
+html[data-rfs-font-scope] .p-sideNav,
+html[data-rfs-font-scope] .p-body,
+html[data-rfs-font-scope] .p-body-header,
+html[data-rfs-font-scope] .p-breadcrumbs,
+html[data-rfs-font-scope] .p-sectionLinks,
+html[data-rfs-font-scope] .p-footer,
+html[data-rfs-font-scope] .block-container,
+html[data-rfs-font-scope] .structItem,
+html[data-rfs-font-scope] .node,
+html[data-rfs-font-scope] .message,
+html[data-rfs-font-scope] .memberHeader,
+html[data-rfs-font-scope] .menu,
+html[data-rfs-font-scope] .offCanvasMenu-content,
+html[data-rfs-font-scope] .notice,
+html[data-rfs-font-scope] .blockMessage,
+html[data-rfs-font-scope] .pageNavWrapper,
+html[data-rfs-font-scope] .filterBar,
+html[data-rfs-font-scope] .button,
+html[data-rfs-font-scope] .input {
+  font-family: var(--rfs-font-stack, var(--rfs-font-family)) !important;
+  font-size: calc(var(--rfs-base-size, 15px) * var(--rfs-font-scale, 1)) !important;
+  letter-spacing: var(--rfs-font-track, 0px) !important;
+  line-height: var(--rfs-font-line, 1.5) !important;
+}
+
+/* --- 2. Насыщенность: только «телесные» элементы интерфейса.
+   Заголовки, кнопки, метки и подписи держат собственный вес
+   (правила из components.css / user-агент), наследие здесь
+   их не задевает — правило наследуется только если у элемента
+   нет собственного объявления.                               */
+
+html[data-rfs-font-scope="ui"] .p-navTop,
+html[data-rfs-font-scope="ui"] .p-nav,
+html[data-rfs-font-scope="ui"] .p-sideNav,
+html[data-rfs-font-scope="ui"] .p-body,
+html[data-rfs-font-scope="ui"] .p-body-header,
+html[data-rfs-font-scope="ui"] .p-breadcrumbs,
+html[data-rfs-font-scope="ui"] .p-footer,
+html[data-rfs-font-scope="ui"] .block-body,
+html[data-rfs-font-scope="ui"] .block-footer,
+html[data-rfs-font-scope="ui"] .structItem,
+html[data-rfs-font-scope="ui"] .node,
+html[data-rfs-font-scope="ui"] .message-user,
+html[data-rfs-font-scope="ui"] .message-footer,
+html[data-rfs-font-scope="ui"] .menu,
+html[data-rfs-font-scope="ui"] .notice,
+html[data-rfs-font-scope="ui"] .blockMessage,
+html[data-rfs-font-scope="ui"] .pageNavWrapper,
+html[data-rfs-font-scope="ui"] .filterBar {
+  font-weight: var(--rfs-font-weight, 400) !important;
+}
+
+/* --- 3. Скоупы all / allExceptPosts: вся страница --------------------- */
+
+html[data-rfs-font-scope="all"],
+html[data-rfs-font-scope="all"] body,
+html[data-rfs-font-scope="allExceptPosts"],
+html[data-rfs-font-scope="allExceptPosts"] body {
+  font-family: var(--rfs-font-stack, var(--rfs-font-family)) !important;
+  font-size: calc(var(--rfs-base-size, 15px) * var(--rfs-font-scale, 1)) !important;
+  font-weight: var(--rfs-font-weight, 400) !important;
+  letter-spacing: var(--rfs-font-track, 0px) !important;
+  line-height: var(--rfs-font-line, 1.5) !important;
+}
+
+/* --- 4. Исключение постов: .bbWrapper возвращается к исходной
+   типографике форума (семейство темы, измеренный кегль,
+   стандартный интерлиньяж 1.4 ≈ 15/21).                      */
+
+html[data-rfs-font-scope="ui"] .bbWrapper,
+html[data-rfs-font-scope="allExceptPosts"] .bbWrapper {
+  font-family: var(--rfs-font-family) !important;
+  font-size: var(--rfs-base-size, 15px) !important;
+  font-weight: 400 !important;
+  letter-spacing: normal !important;
+  line-height: calc(var(--rfs-base-size, 15px) * 1.4) !important;
+}

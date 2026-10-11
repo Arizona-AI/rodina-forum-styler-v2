@@ -1,0 +1,97 @@
+/* ============================================================
+   base.css — каркас страницы: фон html/body, цвет текста,
+   выделение (selection), скроллбары, базовые ссылки.
+
+   ПОРЯДОК НАЛОЖЕНИЯ СЛОЁВ (критически важно, не менять):
+   - Фон страницы несёт <html> — page-bg + градиент темы.
+   - <body> прозрачный, без собственного фона и БЕЗ stacking
+     context (никаких z-index/transform/opacity/filter).
+   - #top.p-pageWrapper тоже без stacking context.
+   - Слои расширения (#rfs-bg-layer z:-2, #rfs-bg-overlay z:-1)
+     вставляются ПЕРВЫМИ детьми #top: отрицательный z-index
+     рисуется в стек-контексте корня, т.е. после фона <html> и до
+     фона body/контента. Если повесить на body или #top
+     z-index/transform/opacity/backdrop-filter — они создадут
+     stacking context, и слои уйдут под фон, став невидимыми.
+   ============================================================ */
+
+/* --- Фон страницы и базовый текст -------------------------------- */
+
+html {
+  background-color: var(--rfs-page-bg) !important;
+  background-image: var(--rfs-page-gradient) !important;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: var(--rfs-text) !important;
+  font-family: var(--rfs-font-family);
+}
+
+body {
+  /* Прозрачно, чтобы сквозь него были видны слои #rfs-bg-layer/-overlay */
+  background: transparent !important;
+  color: var(--rfs-text) !important;
+  font-family: var(--rfs-font-family);
+}
+
+/* --- Выделение текста -------------------------------------------- */
+
+::selection {
+  background: var(--rfs-selection-bg);
+  color: var(--rfs-text);
+}
+
+/* --- Скроллбары (Firefox + WebKit) ------------------------------- */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--rfs-border-strong) rgb(var(--rfs-surface-rgb) / 0.35);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--rfs-surface-rgb) / 0.35);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--rfs-border-strong);
+  background-clip: content-box;
+  border: 2px solid transparent;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--rfs-text-faint);
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* --- Базовые ссылки ------------------------------------------------
+   Контекстные цвета ссылок (навигация, заголовки, посты) задаются
+   в chrome.css/components.css с !important — здесь только
+   глобальное значение, которое переживает тему форума на
+   равной специфичности (наш <style> идёт последним в <head>).
+   --------------------------------------------------------------- */
+
+a {
+  color: var(--rfs-link);
+}
+
+a:hover {
+  color: var(--rfs-link-hover);
+}
+
+/* --- Мелкая типографика ------------------------------------------- */
+
+mark {
+  background: var(--rfs-primary-soft);
+  color: var(--rfs-text);
+  border-radius: 3px;
+  padding: 0 2px;
+}

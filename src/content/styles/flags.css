@@ -1,0 +1,538 @@
+/* ============================================================
+   flags.css — условные правила: только при наличии атрибута
+   html[data-rfs-*]. Атрибута нет — правила не существуют,
+   выключенная настройка не оставляет следов.
+
+   Порядок файлов: components → flags, поэтому флаги всегда
+   перекрывают базовый рестайл (плюс атрибут повышает
+   специфичность).
+   ============================================================ */
+
+/* === Скрытые элементы (hide-*) ===================================== */
+
+html[data-rfs-hide-footer] .p-footer,
+html[data-rfs-hide-footer] footer#footer {
+  display: none !important;
+}
+
+html[data-rfs-hide-sidebar] .p-body-sidebar-container,
+html[data-rfs-hide-sidebar] .p-body-sidebar {
+  display: none !important;
+}
+
+html[data-rfs-hide-avatars] .avatar,
+html[data-rfs-hide-avatars] .message-avatar {
+  display: none !important;
+}
+
+html[data-rfs-hide-node-icons] .node-icon {
+  display: none !important;
+}
+
+/* Поголовно «почта и оповещения»: XenForo-группы conversations + alerts. */
+html[data-rfs-hide-header-alerts] .p-navgroup--alerts,
+html[data-rfs-hide-header-alerts] .p-navgroup-link--alerts,
+html[data-rfs-hide-header-alerts] .p-navgroup--conversations,
+html[data-rfs-hide-header-alerts] .p-navgroup-link--conversations,
+html[data-rfs-hide-header-alerts] .p-navgroup-link[href*="/conversations"],
+html[data-rfs-hide-header-alerts] .p-navgroup-link[href*="/alerts"] {
+  display: none !important;
+}
+
+html[data-rfs-hide-subforums] .node-subNodeMenu,
+html[data-rfs-hide-subforums] .node-subNodeList,
+html[data-rfs-hide-subforums] .node-extra-row,
+html[data-rfs-hide-subforums] .node-extra {
+  display: none !important;
+}
+
+html[data-rfs-hide-prefixes] .structItem-title .label,
+html[data-rfs-hide-prefixes] .structItem-title .labelLink,
+html[data-rfs-hide-prefixes] .structItem-prefix {
+  display: none !important;
+}
+
+html[data-rfs-hide-unread] .node--newIndicator,
+html[data-rfs-hide-unread] .structItem-statuses,
+html[data-rfs-hide-unread] .structItem-status {
+  display: none !important;
+}
+
+/* === Липкая верхняя панель ========================================= */
+
+html[data-rfs-sticky-header] .p-navTop,
+html[data-rfs-sticky-header] .p-header {
+  position: sticky;
+  top: 0;
+  z-index: 300;
+}
+
+/* === Пользовательский радиус карточек/полей/меню ==================== */
+
+html[data-rfs-radius] .block-container,
+html[data-rfs-radius] .message,
+html[data-rfs-radius] .memberHeader,
+html[data-rfs-radius] .notice,
+html[data-rfs-radius] .blockMessage,
+html[data-rfs-radius] .menu > .menu-content,
+html[data-rfs-radius] .offCanvasMenu-content,
+html[data-rfs-radius] .input,
+html[data-rfs-radius] .button,
+html[data-rfs-radius] textarea,
+html[data-rfs-radius] select,
+html[data-rfs-radius] .pageNav a {
+  border-radius: var(--rfs-ui-radius, 12px) !important;
+}
+
+html[data-rfs-radius] .block-container > .block-header:first-child,
+html[data-rfs-radius] .block-container > .block-tabHeader:first-child {
+  border-radius: var(--rfs-ui-radius, 12px) var(--rfs-ui-radius, 12px) 0 0 !important;
+}
+
+html[data-rfs-radius] .block-container > .block-footer:last-child {
+  border-radius: 0 0 var(--rfs-ui-radius, 12px) var(--rfs-ui-radius, 12px) !important;
+}
+
+/* === Форма кнопок (btn-shape) ======================================= */
+
+html[data-rfs-btn-shape="pill"] .button {
+  border-radius: 999px !important;
+}
+
+html[data-rfs-btn-shape="rounded"] .button {
+  border-radius: 10px !important;
+}
+
+html[data-rfs-btn-shape="square"] .button {
+  border-radius: 3px !important;
+}
+
+/* === Стиль кнопок (btn-style) ======================================= */
+
+html[data-rfs-btn-style="solid"] .button {
+  background: var(--rfs-primary) !important;
+  border-color: var(--rfs-primary) !important;
+  color: var(--rfs-primary-fg) !important;
+}
+
+html[data-rfs-btn-style="soft"] .button {
+  background: rgb(var(--rfs-primary-rgb) / 0.14) !important;
+  border-color: rgb(var(--rfs-primary-rgb) / 0.3) !important;
+  color: var(--rfs-primary) !important;
+}
+
+html[data-rfs-btn-style="outline"] .button {
+  background: transparent !important;
+  border-color: var(--rfs-primary) !important;
+  color: var(--rfs-primary) !important;
+}
+
+@media (hover: hover) {
+  html[data-rfs-btn-style="solid"] .button:hover {
+    background: var(--rfs-primary-hover) !important;
+    border-color: var(--rfs-primary-hover) !important;
+    color: var(--rfs-primary-fg) !important;
+  }
+
+  html[data-rfs-btn-style="soft"] .button:hover {
+    background: rgb(var(--rfs-primary-rgb) / 0.24) !important;
+    color: var(--rfs-primary) !important;
+  }
+
+  html[data-rfs-btn-style="outline"] .button:hover {
+    background: rgb(var(--rfs-primary-rgb) / 0.1) !important;
+    color: var(--rfs-primary) !important;
+  }
+}
+
+/* === Аватары: форма и масштаб ======================================= */
+
+html[data-rfs-avatar-shape="circle"] .avatar {
+  border-radius: 50% !important;
+}
+
+html[data-rfs-avatar-shape="rounded"] .avatar {
+  border-radius: 25% !important;
+}
+
+html[data-rfs-avatar-shape="square"] .avatar {
+  border-radius: 0 !important;
+}
+
+/* transform не перестраивает соседей — для аватаров это допустимо
+   и не ломает сетки (масштаб 80–140 %). */
+html[data-rfs-avatar-scale] .avatar {
+  transform: scale(var(--rfs-avatar-scale, 1));
+  transform-origin: center center;
+}
+
+/* === Оформление сообщений (post-style) ============================== */
+
+html[data-rfs-post-style="flat"] .message {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+html[data-rfs-post-style="card"] .message {
+  border-radius: var(--rfs-radius-lg) !important;
+  box-shadow: var(--rfs-shadow-2) !important;
+}
+
+html[data-rfs-post-style="bordered"] .message {
+  border: 1px solid var(--rfs-border-strong) !important;
+  border-radius: var(--rfs-radius-md) !important;
+  box-shadow: none !important;
+}
+
+/* === Плотность списка (density=compact) ============================== */
+
+html[data-rfs-density="compact"] .structItem-cell {
+  padding-bottom: 5px !important;
+  padding-top: 5px !important;
+}
+
+html[data-rfs-density="compact"] .node .node-body {
+  padding-bottom: 7px !important;
+  padding-top: 7px !important;
+}
+
+html[data-rfs-density="compact"] .block-body {
+  padding-bottom: 8px !important;
+  padding-top: 8px !important;
+}
+
+html[data-rfs-density="compact"] .message {
+  margin-bottom: 8px !important;
+}
+
+html[data-rfs-density="compact"] .node-subNodeMenu {
+  padding-bottom: 4px !important;
+  padding-top: 4px !important;
+}
+
+/* === Повышение контраста (contrast-boost) ============================ */
+
+html[data-rfs-contrast-boost] .p-description,
+html[data-rfs-contrast-boost] .node-description,
+html[data-rfs-contrast-boost] .node-meta,
+html[data-rfs-contrast-boost] .structItem-minor,
+html[data-rfs-contrast-boost] .message-attribution,
+html[data-rfs-contrast-boost] .message-userExtras,
+html[data-rfs-contrast-boost] .pairs dt,
+html[data-rfs-contrast-boost] .pairs--justified dt,
+html[data-rfs-contrast-boost] .block-footer,
+html[data-rfs-contrast-boost] .p-footer,
+html[data-rfs-contrast-boost] .filterBar,
+html[data-rfs-contrast-boost] .node-subNodeMenu {
+  color: var(--rfs-text-muted-strong) !important;
+}
+
+html[data-rfs-contrast-boost] .p-breadcrumbs-item,
+html[data-rfs-contrast-boost] .p-breadcrumbs a,
+html[data-rfs-contrast-boost] .structItem-status,
+html[data-rfs-contrast-boost] .structItem-statuses,
+html[data-rfs-contrast-boost] .message-footer,
+html[data-rfs-contrast-boost] .badge {
+  color: var(--rfs-text-faint-strong) !important;
+}
+
+html[data-rfs-contrast-boost] .block-container,
+html[data-rfs-contrast-boost] .message,
+html[data-rfs-contrast-boost] .structItem,
+html[data-rfs-contrast-boost] .menu > .menu-content,
+html[data-rfs-contrast-boost] .notice,
+html[data-rfs-contrast-boost] .blockMessage,
+html[data-rfs-contrast-boost] .input:not(:focus),
+html[data-rfs-contrast-boost] .button {
+  border-color: var(--rfs-border-strong-visible) !important;
+}
+
+/* === Кольцо фокуса (focus-ring) ===================================== */
+
+html[data-rfs-focus-ring] :focus-visible {
+  outline: 2px solid var(--rfs-focus-ring) !important;
+  outline-offset: 2px !important;
+}
+
+/* === Уменьшенное движение ============================================ */
+
+html[data-rfs-reduced-motion] *,
+html[data-rfs-reduced-motion] *::before,
+html[data-rfs-reduced-motion] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+html[data-rfs-reduce-transitions] *,
+html[data-rfs-reduce-transitions] *::before,
+html[data-rfs-reduce-transitions] *::after {
+  transition-duration: 0.01ms !important;
+}
+
+/* === Твики идентичности (перенос Arizona Forum Styler) ================ */
+
+html[data-rfs-hide-user-banners] .userBanner {
+  display: none !important;
+}
+
+html[data-rfs-hide-style-variation] .js-styleVariationsLink,
+html[data-rfs-hide-style-variation] a[data-xf-click="style-variation"] {
+  display: none !important;
+}
+
+/* Убрать покрас ников: цвет наследуется, тени/заливки paint-классов снимаются */
+html[data-rfs-remove-paints] .username,
+html[data-rfs-remove-paints] .username *,
+html[data-rfs-remove-paints] a.userLink,
+html[data-rfs-remove-paints] a.userLink * {
+  color: inherit !important;
+  text-shadow: none !important;
+  background: none !important;
+}
+
+/* Заблокированные: красный ник */
+html[data-rfs-banned-style="red-paint"] a.username--banned,
+html[data-rfs-banned-style="red-paint"] .username--banned {
+  color: #ff4d4d !important;
+  text-shadow: 0 0 8px rgb(255 77 77 / 0.4) !important;
+}
+
+/* Заблокированные: значок рядом с ником (инжектит модуль userChrome) */
+.rfs-banned-icon {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 4px;
+  color: #ff4d4d;
+  vertical-align: middle;
+}
+
+.rfs-banned-icon svg {
+  width: 13px;
+  height: 13px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+/* === Обводка / свечение / покрас аватаров ============================= */
+
+html[data-rfs-avatar-style="accent"] .avatar {
+  border-color: var(--rfs-primary) !important;
+}
+
+@media (hover: hover) {
+  html[data-rfs-avatar-style="accent"] .avatar:hover {
+    border-color: var(--rfs-secondary) !important;
+    transform: scale(1.04) !important;
+  }
+}
+
+html[data-rfs-avatar-style="glow"] .avatar {
+  border-color: var(--rfs-primary) !important;
+  box-shadow: 0 0 14px rgb(var(--rfs-primary-rgb) / 0.55) !important;
+}
+
+@media (hover: hover) {
+  html[data-rfs-avatar-style="glow"] .avatar:hover {
+    border-color: var(--rfs-secondary) !important;
+    box-shadow: 0 0 20px rgb(var(--rfs-primary-rgb) / 0.8) !important;
+    transform: scale(1.04) !important;
+  }
+}
+
+/* paint-*: цвет берётся из inline-переменной, которую пишет модуль userChrome */
+html[data-rfs-avatar-style="paint-accent"] .avatar {
+  border-color: var(--rfs-avatar-paint, var(--rfs-primary)) !important;
+}
+
+@media (hover: hover) {
+  html[data-rfs-avatar-style="paint-accent"] .avatar:hover {
+    transform: scale(1.04) !important;
+  }
+}
+
+html[data-rfs-avatar-style="paint-glow"] .avatar {
+  border-color: var(--rfs-avatar-paint, var(--rfs-primary)) !important;
+  box-shadow: 0 0 14px var(--rfs-avatar-paint, rgb(var(--rfs-primary-rgb) / 0.55)) !important;
+}
+
+@media (hover: hover) {
+  html[data-rfs-avatar-style="paint-glow"] .avatar:hover {
+    box-shadow: 0 0 20px var(--rfs-avatar-paint, rgb(var(--rfs-primary-rgb) / 0.8)) !important;
+    transform: scale(1.04) !important;
+  }
+}
+
+/* === Логотип форума ====================================================
+   Маску с оригинальным URL подставляет модуль logo в rfs-dyn-logo:
+   sanitizeCssValue не пропускает url() в inline-переменные. */
+
+@keyframes rfs-logo-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+html[data-rfs-logo-style="accent-static"] .p-header-logo img,
+html[data-rfs-logo-style="accent-animated"] .p-header-logo img {
+  /* прозрачная заглушка вместо собственных пикселей логотипа */
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3C/svg%3E") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  -webkit-mask-size: contain !important;
+  mask-size: contain !important;
+  -webkit-mask-repeat: no-repeat !important;
+  mask-repeat: no-repeat !important;
+  -webkit-mask-position: center !important;
+  mask-position: center !important;
+  object-position: static !important;
+  transition: transform 0.2s ease, filter 0.2s ease !important;
+}
+
+html[data-rfs-logo-style="accent-static"] .p-header-logo img {
+  background-image: linear-gradient(135deg, var(--rfs-primary), var(--rfs-secondary)) !important;
+}
+
+html[data-rfs-logo-style="accent-animated"] .p-header-logo img {
+  background-image: linear-gradient(270deg, var(--rfs-primary), var(--rfs-secondary), var(--rfs-primary)) !important;
+  background-size: 200% auto !important;
+  animation: rfs-logo-gradient 3s linear infinite !important;
+}
+
+html[data-rfs-logo-style="accent-static"] .p-header-logo img:hover,
+html[data-rfs-logo-style="accent-animated"] .p-header-logo img:hover {
+  transform: scale(1.06) !important;
+  filter: drop-shadow(0 0 6px var(--rfs-primary)) !important;
+}
+
+/* === Твики интерфейса, вторая волна (Arizona v1.2) ==================== */
+
+html[data-rfs-hide-signatures] .message-signature {
+  display: none !important;
+}
+
+html[data-rfs-hide-breadcrumbs] .p-breadcrumbs--container,
+html[data-rfs-hide-breadcrumbs] .p-breadcrumbs {
+  display: none !important;
+}
+
+html[data-rfs-hide-section-links] .p-sectionLinks {
+  display: none !important;
+}
+
+html[data-rfs-hide-user-extras] .message-userExtras {
+  display: none !important;
+}
+
+html[data-rfs-hide-your-posts] .structItem-secondaryIcon {
+  display: none !important;
+}
+
+html[data-rfs-hide-conversations] .p-navgroup-link--conversations {
+  display: none !important;
+}
+
+html[data-rfs-hide-post-bg] .block-container.lbContainer,
+html[data-rfs-hide-post-bg] .block-container.js-lbContainer {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* --- поиск в шапке --- */
+html[data-rfs-nav-search="hide"] .p-navgroup-link--search {
+  display: none !important;
+}
+
+html[data-rfs-nav-search="icon-only"] .p-navgroup-link--search .p-navgroup-linkText {
+  display: none !important;
+}
+
+/* --- иконки форумов по статусу --- */
+html[data-rfs-node-icon-status="mute-read"] .node:not(.node--unread) .node-icon {
+  filter: grayscale(1) opacity(0.55);
+}
+
+/* --- акценты Arizona --- */
+html[data-rfs-accent-buttons] .button:not(.button--primary):not(.button--link) {
+  color: var(--rfs-primary) !important;
+}
+
+@media (hover: hover) {
+  html[data-rfs-accent-buttons] .button:not(.button--primary):not(.button--link):hover {
+    color: var(--rfs-primary-hover) !important;
+    border-color: var(--rfs-primary) !important;
+  }
+}
+
+html[data-rfs-accent-buttons] .button.button--link {
+  color: var(--rfs-text-muted) !important;
+}
+
+@media (hover: hover) {
+  html[data-rfs-accent-buttons] .button.button--link:hover {
+    color: var(--rfs-primary) !important;
+  }
+}
+
+html[data-rfs-accent-thread-list] .structItem-title a {
+  color: var(--rfs-primary) !important;
+}
+
+@media (hover: hover) {
+  html[data-rfs-accent-thread-list] .structItem-title a:hover {
+    color: var(--rfs-primary-hover) !important;
+  }
+}
+
+html[data-rfs-accent-threads-meta] .listInline a,
+html[data-rfs-accent-threads-meta] .structItem-parts a,
+html[data-rfs-accent-threads-meta] .structItem-startDate a,
+html[data-rfs-accent-threads-meta] .p-description a {
+  color: var(--rfs-primary) !important;
+}
+
+@media (hover: hover) {
+  html[data-rfs-accent-threads-meta] .listInline a:hover,
+  html[data-rfs-accent-threads-meta] .structItem-parts a:hover,
+  html[data-rfs-accent-threads-meta] .structItem-startDate a:hover,
+  html[data-rfs-accent-threads-meta] .p-description a:hover {
+    color: var(--rfs-primary-hover) !important;
+  }
+}
+
+html[data-rfs-accent-post-attribution] .message-attribution a,
+html[data-rfs-accent-post-attribution] .message-attribution-opposite a,
+html[data-rfs-accent-post-attribution] .message-attribution-main a {
+  color: var(--rfs-primary) !important;
+}
+
+@media (hover: hover) {
+  html[data-rfs-accent-post-attribution] .message-attribution a:hover,
+  html[data-rfs-accent-post-attribution] .message-attribution-opposite a:hover,
+  html[data-rfs-accent-post-attribution] .message-attribution-main a:hover {
+    color: var(--rfs-primary-hover) !important;
+  }
+}
+
+html[data-rfs-accent-new-badge] .structItem.is-unread .structItem-title a:not(.labelLink):after {
+  background: rgb(var(--rfs-primary-rgb) / 0.18) !important;
+  color: var(--rfs-primary) !important;
+  border: 1px solid rgb(var(--rfs-primary-rgb) / 0.4) !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+  box-shadow: 0 0 8px rgb(var(--rfs-primary-rgb) / 0.25) !important;
+}
+
+/* Текстовый логотип (без <img>): градиентная заливка текста —
+   правило добавляет модуль logo, когда img не найден. */

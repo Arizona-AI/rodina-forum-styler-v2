@@ -1,0 +1,23 @@
+/* ==========================================================================
+   Rodina Forum Styler — popup shell.
+   The popup is a frame around the full control panel (options.html?popup=1):
+   Chrome caps popups at 800×600, so the shell matches that exactly and the
+   panel handles its own scrolling. Palette follows the panel's own theme.
+   ========================================================================== */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 800px;
+  height: 600px;
+  overflow: hidden;
+  background: #12080c; /* matches --bg in options.css (dark) to avoid flashes */
+}
+
+iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}

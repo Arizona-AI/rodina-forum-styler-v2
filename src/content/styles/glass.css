@@ -1,0 +1,74 @@
+/* ============================================================
+   glass.css — селективный стекломорфизм.
+   Атрибуты: data-rfs-glass-blocks | glass-posts | glass-nav |
+   glass-menus (все существуют только при glass.enabled).
+   Значения: --rfs-glass-blur / --rfs-glass-alpha /
+   --rfs-glass-border-alpha / --rfs-glass-shadow-alpha.
+
+   Правила идут ПОСЛЕ components/chrome, поэтому накладываются
+   поверх базовых цветов, сохраняя текстовые цвета.
+   ============================================================ */
+
+/* --- Группа: блоки (.block-container) ------------------------------- */
+
+html[data-rfs-glass-blocks] .block-container {
+  background: rgb(var(--rfs-surface-rgb) / var(--rfs-glass-alpha)) !important;
+  backdrop-filter: blur(var(--rfs-glass-blur));
+  -webkit-backdrop-filter: blur(var(--rfs-glass-blur));
+  border-color: rgb(var(--rfs-border-rgb) / var(--rfs-glass-border-alpha)) !important;
+  box-shadow: 0 12px 32px -12px var(--rfs-shadow-2);
+  box-shadow: 0 12px 32px -12px
+    rgb(from var(--rfs-shadow-color) r g b / var(--rfs-glass-shadow-alpha));
+}
+
+html[data-rfs-glass-blocks] .block-container > .block-header,
+html[data-rfs-glass-blocks] .block-container > .block-tabHeader,
+html[data-rfs-glass-blocks] .block-container > .block-footer {
+  background: transparent !important;
+}
+
+/* --- Группа: сообщения (.message) ----------------------------------- */
+
+html[data-rfs-glass-posts] .message {
+  background: rgb(var(--rfs-surface-rgb) / var(--rfs-glass-alpha)) !important;
+  backdrop-filter: blur(var(--rfs-glass-blur));
+  -webkit-backdrop-filter: blur(var(--rfs-glass-blur));
+  border-color: rgb(var(--rfs-border-rgb) / var(--rfs-glass-border-alpha)) !important;
+  box-shadow: 0 14px 36px -14px var(--rfs-shadow-2);
+  box-shadow: 0 14px 36px -14px
+    rgb(from var(--rfs-shadow-color) r g b / var(--rfs-glass-shadow-alpha));
+}
+
+html[data-rfs-glass-posts] .message .message-user,
+html[data-rfs-glass-posts] .message .message-body {
+  background: transparent !important;
+}
+
+/* --- Группа: навигация (верхняя панель + боковое меню) --------------- */
+
+html[data-rfs-glass-nav] .p-navTop,
+html[data-rfs-glass-nav] .p-header,
+html[data-rfs-glass-nav] .p-sideNav,
+html[data-rfs-glass-nav] nav.p-nav {
+  background: rgb(var(--rfs-header-rgb) / var(--rfs-glass-alpha)) !important;
+  backdrop-filter: blur(var(--rfs-glass-blur));
+  -webkit-backdrop-filter: blur(var(--rfs-glass-blur));
+  border-color: rgb(var(--rfs-border-rgb) / var(--rfs-glass-border-alpha)) !important;
+  box-shadow: 0 8px 24px -12px var(--rfs-shadow-2);
+  box-shadow: 0 8px 24px -12px
+    rgb(from var(--rfs-shadow-color) r g b / var(--rfs-glass-shadow-alpha));
+}
+
+/* --- Группа: меню (выпадающие + off-canvas ящик) -------------------- */
+
+html[data-rfs-glass-menus] .menu > .menu-content,
+html[data-rfs-glass-menus] .offCanvasMenu,
+html[data-rfs-glass-menus] .offCanvasMenu-content {
+  background: rgb(var(--rfs-surface-rgb) / var(--rfs-glass-alpha)) !important;
+  backdrop-filter: blur(var(--rfs-glass-blur));
+  -webkit-backdrop-filter: blur(var(--rfs-glass-blur));
+  border-color: rgb(var(--rfs-border-rgb) / var(--rfs-glass-border-alpha)) !important;
+  box-shadow: 0 16px 40px -16px var(--rfs-shadow-3);
+  box-shadow: 0 16px 40px -16px
+    rgb(from var(--rfs-shadow-color) r g b / var(--rfs-glass-shadow-alpha));
+}

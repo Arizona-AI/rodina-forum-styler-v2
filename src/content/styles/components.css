@@ -1,0 +1,748 @@
+/* ============================================================
+   components.css — визуальное сердце рестайла: блоки, список
+   форумов (node), список тем (structItem), сообщения (message)
+   и типографика постов (.bbWrapper), профиль, аватары,
+   метки/префиксы, бейджи, пары, username/userBanner, кнопки,
+   поля ввода, редактор Froala, плавающая кнопка паузы.
+   ============================================================ */
+
+/* === Блоки ========================================================== */
+
+.block-container {
+  background: var(--rfs-surface) !important;
+  border: 1px solid var(--rfs-border) !important;
+  border-radius: var(--rfs-radius-lg) !important;
+  box-shadow: var(--rfs-shadow-1) !important;
+  color: var(--rfs-text) !important;
+}
+
+.block-container > .block-header:first-child,
+.block-container > .block-tabHeader:first-child {
+  background: var(--rfs-surface-alt) !important;
+  border-bottom: 1px solid var(--rfs-border) !important;
+  border-radius: var(--rfs-radius-lg) var(--rfs-radius-lg) 0 0 !important;
+}
+
+.block-header,
+.block-tabHeader {
+  background: var(--rfs-surface-alt) !important;
+  color: var(--rfs-text) !important;
+  font-weight: 600;
+}
+
+.block-body {
+  color: var(--rfs-text) !important;
+}
+
+.block-container > .block-footer:last-child {
+  background: rgb(var(--rfs-surface-alt-rgb) / 0.6) !important;
+  border-top: 1px solid var(--rfs-border) !important;
+  border-radius: 0 0 var(--rfs-radius-lg) var(--rfs-radius-lg) !important;
+}
+
+.block-footer {
+  color: var(--rfs-text-muted) !important;
+}
+
+.block-footer a {
+  color: var(--rfs-text-muted) !important;
+}
+
+@media (hover: hover) {
+  .block-footer a:hover {
+    color: var(--rfs-link) !important;
+  }
+}
+
+/* Вкладки в шапке блока (.block-tabHeader / .tabs) */
+
+.block-tabHeader a,
+.block-tabHeader .tabs-tab {
+  color: var(--rfs-text-muted) !important;
+  border-radius: var(--rfs-radius-sm) !important;
+}
+
+@media (hover: hover) {
+  .block-tabHeader a:hover,
+  .block-tabHeader .tabs-tab:hover {
+    background: var(--rfs-hover-overlay) !important;
+    color: var(--rfs-link) !important;
+  }
+}
+
+.block-tabHeader a.is-active,
+.block-tabHeader a.is-selected,
+.block-tabHeader .tabs-tab.is-active,
+.block-tabHeader .tabs-tab.is-selected,
+.block-tabHeader [aria-selected="true"] {
+  background: rgb(var(--rfs-primary-rgb) / 0.12) !important;
+  color: var(--rfs-primary) !important;
+}
+
+/* === Индекс форумов (forum_list: .node) ============================= */
+
+.node {
+  color: var(--rfs-text) !important;
+  transition: background-color 0.15s ease;
+}
+
+.block-body > .node + .node {
+  border-top: 1px solid rgb(var(--rfs-border-rgb) / 0.6) !important;
+}
+
+@media (hover: hover) {
+  .node:hover {
+    background: rgb(var(--rfs-surface-rgb) / 0.5) !important;
+  }
+}
+
+.node-icon {
+  background: rgb(var(--rfs-primary-rgb) / 0.1) !important;
+  border: 1px solid rgb(var(--rfs-border-rgb) / 0.7) !important;
+  border-radius: var(--rfs-radius-md) !important;
+  color: var(--rfs-primary) !important;
+}
+
+.node-icon img,
+.node-icon .avatar {
+  border-radius: var(--rfs-radius-md) !important;
+}
+
+.node-title {
+  color: var(--rfs-text) !important;
+  font-weight: 600;
+}
+
+.node-title a {
+  color: var(--rfs-text) !important;
+  font-weight: 600;
+}
+
+@media (hover: hover) {
+  .node-title a:hover {
+    color: var(--rfs-link-hover) !important;
+  }
+}
+
+.node-description {
+  color: var(--rfs-text-muted) !important;
+}
+
+.node-meta {
+  color: var(--rfs-text-faint) !important;
+}
+
+.node-meta a {
+  color: var(--rfs-text-muted) !important;
+}
+
+@media (hover: hover) {
+  .node-meta a:hover {
+    color: var(--rfs-link) !important;
+  }
+}
+
+.node-stats {
+  color: var(--rfs-text-muted) !important;
+}
+
+.node-extra {
+  color: var(--rfs-text-muted) !important;
+}
+
+.node-extra a {
+  color: var(--rfs-text-muted) !important;
+}
+
+@media (hover: hover) {
+  .node-extra a:hover {
+    color: var(--rfs-link) !important;
+  }
+}
+
+.node-subNodeMenu,
+.node-subNodeList {
+  color: var(--rfs-text-faint) !important;
+  border-top: 1px solid rgb(var(--rfs-border-rgb) / 0.5) !important;
+}
+
+.node-subNodeMenu a,
+.node-subNodeList a {
+  color: var(--rfs-text-muted) !important;
+}
+
+@media (hover: hover) {
+  .node-subNodeMenu a:hover,
+  .node-subNodeList a:hover {
+    color: var(--rfs-link) !important;
+  }
+}
+
+.node--newIndicator {
+  background: rgb(var(--rfs-primary-rgb) / 0.14) !important;
+  border: 1px solid rgb(var(--rfs-primary-rgb) / 0.35) !important;
+  border-radius: 999px !important;
+  color: var(--rfs-primary) !important;
+}
+
+/* === Список тем (forum_view: .structItem) =========================== */
+
+.structItem {
+  border-bottom: 1px solid rgb(var(--rfs-border-rgb) / 0.6) !important;
+  color: var(--rfs-text) !important;
+  transition: background-color 0.15s ease;
+}
+
+.structItem:last-child {
+  border-bottom-color: transparent !important;
+}
+
+@media (hover: hover) {
+  .structItem:hover {
+    background: rgb(var(--rfs-surface-rgb) / 0.45) !important;
+  }
+}
+
+.structItem-cell--icon .avatar,
+.structItem-iconContainer .avatar {
+  border-radius: var(--rfs-radius-sm) !important;
+}
+
+.structItem-title {
+  color: var(--rfs-text) !important;
+}
+
+.structItem-title a {
+  color: var(--rfs-text) !important;
+  font-weight: 500;
+}
+
+@media (hover: hover) {
+  .structItem-title a:hover {
+    color: var(--rfs-link-hover) !important;
+  }
+}
+
+.structItem.is-unread .structItem-title a {
+  color: var(--rfs-link) !important;
+  font-weight: 600;
+}
+
+.structItem.is-locked .structItem-title a {
+  color: var(--rfs-text-muted) !important;
+}
+
+.structItem-minor,
+.structItem-cell--meta,
+.structItem-cell--latest {
+  color: var(--rfs-text-muted) !important;
+}
+
+.structItem-minor a {
+  color: var(--rfs-text-muted) !important;
+}
+
+@media (hover: hover) {
+  .structItem-minor a:hover {
+    color: var(--rfs-link) !important;
+  }
+}
+
+.structItem-statuses {
+  color: var(--rfs-text-faint) !important;
+}
+
+.structItem-status {
+  color: var(--rfs-text-faint) !important;
+}
+
+.structItem-status--unread {
+  color: var(--rfs-primary) !important;
+}
+
+/* === Сообщения (thread_view: .message) ============================== */
+
+.message {
+  background: var(--rfs-surface) !important;
+  border: 1px solid var(--rfs-border) !important;
+  border-radius: var(--rfs-radius-lg) !important;
+  box-shadow: var(--rfs-shadow-1) !important;
+  color: var(--rfs-text) !important;
+}
+
+/* Отступ между карточками сообщений (без !important: правило
+   равной специфичности с темой форума, наш <style> идёт позже). */
+html body .message {
+  margin-bottom: 14px;
+}
+
+.message-user {
+  color: var(--rfs-text) !important;
+}
+
+.message-userArrow {
+  color: var(--rfs-border) !important;
+}
+
+.message-userDetails {
+  color: var(--rfs-text-muted) !important;
+}
+
+.message-userExtras {
+  color: var(--rfs-text-muted) !important;
+}
+
+.message-body,
+.message-content {
+  color: var(--rfs-text) !important;
+}
+
+.message-footer {
+  border-top: 1px solid rgb(var(--rfs-border-rgb) / 0.6) !important;
+  color: var(--rfs-text-faint) !important;
+}
+
+.message-attribution {
+  color: var(--rfs-text-faint) !important;
+}
+
+.message-attribution a {
+  color: var(--rfs-text-muted) !important;
+}
+
+@media (hover: hover) {
+  .message-attribution a:hover {
+    color: var(--rfs-link) !important;
+  }
+}
+
+/* --- Панель действий и реакции --------------------------------------- */
+
+.actionBar-action {
+  color: var(--rfs-text-muted) !important;
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  border-radius: var(--rfs-radius-sm) !important;
+  box-shadow: none !important;
+}
+
+@media (hover: hover) {
+  .actionBar-action:hover {
+    background: var(--rfs-hover-overlay) !important;
+    border-color: var(--rfs-border) !important;
+    color: var(--rfs-link) !important;
+  }
+}
+
+.reaction {
+  background: rgb(var(--rfs-surface-alt-rgb) / 0.8) !important;
+  border: 1px solid var(--rfs-border) !important;
+  border-radius: 999px !important;
+  color: var(--rfs-text-muted) !important;
+}
+
+@media (hover: hover) {
+  .reaction:hover {
+    background: var(--rfs-primary-soft) !important;
+    border-color: rgb(var(--rfs-primary-rgb) / 0.4) !important;
+    color: var(--rfs-primary) !important;
+  }
+}
+
+/* === Типографика постов (.bbWrapper) ================================= */
+
+.bbWrapper {
+  color: var(--rfs-text) !important;
+}
+
+.bbWrapper a {
+  color: var(--rfs-link) !important;
+}
+
+@media (hover: hover) {
+  .bbWrapper a:hover {
+    color: var(--rfs-link-hover) !important;
+  }
+}
+
+.bbWrapper h1,
+.bbWrapper h2,
+.bbWrapper h3,
+.bbWrapper h4,
+.bbWrapper h5,
+.bbWrapper h6 {
+  color: var(--rfs-text) !important;
+  font-weight: 700;
+}
+
+.bbWrapper ul > li::marker,
+.bbWrapper ol > li::marker {
+  color: var(--rfs-primary);
+}
+
+.bbWrapper blockquote {
+  background: rgb(var(--rfs-surface-alt-rgb) / 0.55) !important;
+  border-left: 3px solid var(--rfs-primary) !important;
+  border-radius: 0 var(--rfs-radius-sm) var(--rfs-radius-sm) 0 !important;
+  color: var(--rfs-text-muted) !important;
+}
+
+.bbWrapper blockquote a {
+  color: var(--rfs-link) !important;
+}
+
+/* Контейнеры кода/цитат XenForo (.bbCodeBlock и варианты) */
+
+.bbCodeBlock {
+  background: rgb(var(--rfs-surface-alt-rgb) / 0.6) !important;
+  border: 1px solid var(--rfs-border) !important;
+  border-radius: var(--rfs-radius-md) !important;
+  color: var(--rfs-text) !important;
+}
+
+.bbCodeBlock--quote {
+  border-left: 3px solid var(--rfs-primary) !important;
+}
+
+.bbCodeBlock-title {
+  background: rgb(var(--rfs-surface-alt-rgb) / 0.9) !important;
+  border-bottom: 1px solid var(--rfs-border) !important;
+  color: var(--rfs-text-faint) !important;
+}
+
+.bbWrapper pre {
+  background: rgb(var(--rfs-text-rgb) / 0.05) !important;
+  border: 1px solid var(--rfs-border) !important;
+  border-radius: var(--rfs-radius-md) !important;
+}
+
+.bbWrapper code {
+  background: rgb(var(--rfs-text-rgb) / 0.07) !important;
+  border: 1px solid rgb(var(--rfs-border-rgb) / 0.7) !important;
+  border-radius: var(--rfs-radius-sm) !important;
+  color: var(--rfs-accent) !important;
+}
+
+.bbWrapper pre code,
+.bbWrapper pre .code {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  color: var(--rfs-text) !important;
+}
+
+/* Картинки — кроме смайликов, которым рамка не нужна */
+
+.bbWrapper img:not(.smilie):not(.emoji) {
+  border: 1px solid rgb(var(--rfs-border-rgb) / 0.6) !important;
+  border-radius: var(--rfs-radius-md) !important;
+}
+
+/* Таблицы */
+
+.bbWrapper table {
+  border-color: var(--rfs-border) !important;
+}
+
+.bbWrapper table th {
+  background: rgb(var(--rfs-surface-alt-rgb) / 0.8) !important;
+  border-color: var(--rfs-border) !important;
+  color: var(--rfs-text) !important;
+}
+
+.bbWrapper table td {
+  border-color: var(--rfs-border) !important;
+  color: var(--rfs-text) !important;
+}
+
+/* Спойлеры (нативный <details> и классные варианты) */
+
+.bbWrapper details,
+.bbWrapper .bbSpoiler {
+  background: rgb(var(--rfs-surface-alt-rgb) / 0.55) !important;
+  border: 1px solid var(--rfs-border) !important;
+  border-radius: var(--rfs-radius-md) !important;
+}
+
+.bbWrapper details > summary {
+  color: var(--rfs-link) !important;
+  font-weight: 600;
+}
+
+/* === Профиль (member_view) =========================================== */
+
+.memberHeader {
+  background: rgb(var(--rfs-surface-alt-rgb) / 0.7) !important;
+  border: 1px solid var(--rfs-border) !important;
+  border-radius: var(--rfs-radius-lg) !important;
+  box-shadow: var(--rfs-shadow-1) !important;
+  color: var(--rfs-text) !important;
+}
+
+.memberHeader a:not(.button) {
+  color: var(--rfs-text-muted) !important;
+}
+
+@media (hover: hover) {
+  .memberHeader a:not(.button):hover {
+    color: var(--rfs-link) !important;
+  }
+}
+
+.memberHeader .username {
+  color: var(--rfs-text) !important;
+  font-weight: 700;
+}
+
+/* Посты-сообщения в профиле (.message--simple) */
+
+.message--simple {
+  background: rgb(var(--rfs-surface-rgb) / 0.5) !important;
+  border: 1px solid rgb(var(--rfs-border-rgb) / 0.7) !important;
+  border-radius: var(--rfs-radius-md) !important;
+  box-shadow: none !important;
+}
+
+.message--simple .message-attribution,
+.message--simple .message-userExtras {
+  color: var(--rfs-text-faint) !important;
+}
+
+/* === Аватары =========================================================== */
+
+.avatar {
+  background: var(--rfs-surface-alt) !important;
+  border: 1px solid rgb(var(--rfs-border-rgb) / 0.8) !important;
+  border-radius: 50% !important;
+  box-shadow: var(--rfs-shadow-1) !important;
+}
+
+/* === Метки, префиксы, бейджи =========================================== */
+
+.label,
+.labelLink {
+  background: rgb(var(--rfs-primary-rgb) / 0.14) !important;
+  border: 1px solid rgb(var(--rfs-primary-rgb) / 0.3) !important;
+  border-radius: var(--rfs-radius-sm) !important;
+  color: var(--rfs-primary) !important;
+  font-weight: 600;
+}
+
+a.labelLink:hover {
+  background: rgb(var(--rfs-primary-rgb) / 0.22) !important;
+  color: var(--rfs-primary) !important;
+}
+
+.badge,
+.badgeContainer .badge {
+  background: rgb(var(--rfs-surface-alt-rgb) / 0.8) !important;
+  border: 1px solid var(--rfs-border) !important;
+  border-radius: var(--rfs-radius-sm) !important;
+  color: var(--rfs-text-muted) !important;
+  font-weight: 600;
+}
+
+/* === Пары dt/dd (.pairs, .pairs--justified) ============================ */
+
+.pairs dt,
+.pairs--justified dt {
+  color: var(--rfs-text-faint) !important;
+  font-weight: 400;
+}
+
+.pairs dd,
+.pairs--justified dd {
+  color: var(--rfs-text) !important;
+}
+
+/* === Username и баннер пользователя =================================== */
+
+/* Покрасы ников живут по умолчанию (как на самом форуме); принудительный
+   сброс к цветам темы включается флагом data-rfs-remove-paints. */
+.username,
+.userLink {
+  font-weight: 600;
+}
+
+a.username:hover,
+a.userLink:hover {
+  color: var(--rfs-link-hover) !important;
+}
+
+.userBanner {
+  background: rgb(var(--rfs-primary-rgb) / 0.14) !important;
+  border: 1px solid rgb(var(--rfs-primary-rgb) / 0.35) !important;
+  border-radius: var(--rfs-radius-sm) !important;
+  color: var(--rfs-primary) !important;
+}
+
+/* === Кнопки ============================================================= */
+
+.button {
+  background: var(--rfs-btn-bg) !important;
+  border: 1px solid var(--rfs-btn-border) !important;
+  border-radius: var(--rfs-radius-sm) !important;
+  box-shadow: var(--rfs-shadow-1) !important;
+  color: var(--rfs-btn-fg) !important;
+  transition: background-color 0.15s ease, border-color 0.15s ease,
+    color 0.15s ease, box-shadow 0.15s ease;
+}
+
+@media (hover: hover) {
+  .button:hover {
+    background: var(--rfs-surface-hover) !important;
+    border-color: var(--rfs-border-strong) !important;
+    color: var(--rfs-text) !important;
+  }
+}
+
+.button--primary {
+  background: var(--rfs-primary) !important;
+  border-color: var(--rfs-primary) !important;
+  box-shadow: 0 2px 10px rgb(var(--rfs-primary-rgb) / 0.35) !important;
+  color: var(--rfs-primary-fg) !important;
+}
+
+@media (hover: hover) {
+  .button--primary:hover {
+    background: var(--rfs-primary-hover) !important;
+    border-color: var(--rfs-primary-hover) !important;
+    color: var(--rfs-primary-fg) !important;
+  }
+}
+
+.button.is-active,
+.button--active,
+.button[aria-pressed="true"] {
+  background: rgb(var(--rfs-primary-rgb) / 0.14) !important;
+  border-color: rgb(var(--rfs-primary-rgb) / 0.4) !important;
+  color: var(--rfs-primary) !important;
+}
+
+.button:disabled,
+.button.is-disabled,
+.button--disabled,
+.button[disabled] {
+  box-shadow: none !important;
+  opacity: 0.55 !important;
+}
+
+.button--icon {
+  border-radius: 50% !important;
+}
+
+/* === Поля ввода =========================================================== */
+
+.input {
+  background: rgb(var(--rfs-surface-alt-rgb) / 0.7) !important;
+  border: 1px solid var(--rfs-border) !important;
+  border-radius: var(--rfs-radius-sm) !important;
+  box-shadow: none !important;
+  color: var(--rfs-text) !important;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.input::placeholder {
+  color: var(--rfs-text-faint) !important;
+  opacity: 1;
+}
+
+@media (hover: hover) {
+  .input:hover {
+    border-color: var(--rfs-border-strong) !important;
+  }
+}
+
+/* Фокус: цвет + мягкий ореол. outline здесь НЕ трогаем, чтобы
+   флаг data-rfs-focus-ring мог наложить свой контур. */
+html body .input:focus,
+html body .input:focus-visible {
+  border-color: var(--rfs-primary) !important;
+  box-shadow: 0 0 0 3px var(--rfs-primary-softer) !important;
+}
+
+.input:disabled,
+.input[disabled] {
+  opacity: 0.6 !important;
+}
+
+.formButtonGroup {
+  color: var(--rfs-text-muted) !important;
+}
+
+/* === Редактор Froala ======================================================= */
+
+.fr-box,
+.message-editorWrapper {
+  color: var(--rfs-text) !important;
+}
+
+.fr-box .fr-basic {
+  background: rgb(var(--rfs-surface-alt-rgb) / 0.6) !important;
+  border: 1px solid var(--rfs-border) !important;
+  border-radius: var(--rfs-radius-md) !important;
+}
+
+.fr-toolbar {
+  background: var(--rfs-surface-alt) !important;
+  border-color: var(--rfs-border) !important;
+  border-radius: var(--rfs-radius-md) var(--rfs-radius-md) 0 0 !important;
+}
+
+.fr-toolbar .fr-btn,
+.fr-popup .fr-btn {
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  border-radius: var(--rfs-radius-sm) !important;
+  box-shadow: none !important;
+  color: var(--rfs-text-muted) !important;
+}
+
+@media (hover: hover) {
+  .fr-toolbar .fr-btn:hover,
+  .fr-popup .fr-btn:hover {
+    background: var(--rfs-hover-overlay) !important;
+    color: var(--rfs-text) !important;
+  }
+}
+
+.fr-toolbar .fr-btn.fr-active,
+.fr-popup .fr-btn.fr-active {
+  background: rgb(var(--rfs-primary-rgb) / 0.14) !important;
+  color: var(--rfs-primary) !important;
+}
+
+.fr-popup {
+  background: var(--rfs-surface) !important;
+  border: 1px solid var(--rfs-border) !important;
+  border-radius: var(--rfs-radius-md) !important;
+  box-shadow: var(--rfs-shadow-3) !important;
+  color: var(--rfs-text) !important;
+}
+
+.fr-popup .fr-icon-list li:hover,
+.fr-popup .fr-dropdown-wrapper:hover {
+  background: var(--rfs-hover-overlay) !important;
+}
+
+.fr-input,
+.fr-input:focus {
+  background: rgb(var(--rfs-surface-alt-rgb) / 0.7) !important;
+  border-color: var(--rfs-border) !important;
+  color: var(--rfs-text) !important;
+}
+
+/* === Плавающая кнопка паузы (бэкап, если модуль не задаст стили) ========== */
+
+html[data-rfs-pause-btn] #rfs-pause {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 2147483000;
+  background: var(--rfs-surface) !important;
+  border: 1px solid var(--rfs-border) !important;
+  border-radius: 50% !important;
+  box-shadow: var(--rfs-shadow-2) !important;
+  color: var(--rfs-text) !important;
+  pointer-events: auto;
+}

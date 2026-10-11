@@ -1,0 +1,26 @@
+{
+  "name": "rodina-forum-styler",
+  "version": "1.4.1",
+  "description": "Rodina Forum Styler — theme and customization engine for the Rodina RolePlay XenForo forum (forum.rodina-rp.com).",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "build:firefox": "node build.mjs --firefox",
+    "dev": "node build.mjs --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "node build.mjs --tests && node --test dist-tests/",
+    "package": "node build.mjs --zip"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.300",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.7.0"
+  },
+  "allowScripts": {
+    "esbuild@0.25.12": true
+  }
+}

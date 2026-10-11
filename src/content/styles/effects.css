@@ -1,0 +1,340 @@
+/* ============================================================
+   effects.css — визуальные эффекты, привязанные к флагам:
+   - переходы страниц (data-rfs-transition + класс rfs-tr-enter /
+     rfs-tr-cascade, которые добавляет модуль transitions);
+   - свечение (data-rfs-fx-glow);
+   - анимированный градиент (data-rfs-fx-gradient);
+   - подъём карточек при наведении (data-rfs-fx-lift);
+   - вуаль кроссфейда (data-rfs-crossfade-flash — ставится
+     транзиентно рантаймом) и плавная смена фона
+     (data-rfs-crossfade).
+   Курсорные правила здесь НЕ живут (модуль cursor).
+   ============================================================ */
+
+/* --- Кадры для переходов страниц ------------------------------------ */
+
+@keyframes rfs-tr-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rfs-tr-slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rfs-tr-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rfs-tr-blur {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    filter: none;
+  }
+}
+
+@keyframes rfs-tr-cascadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rfs-tr-fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rfs-tr-slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-36px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rfs-tr-slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(36px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rfs-tr-zoomOut {
+  from {
+    opacity: 0;
+    transform: scale(1.06);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rfs-tr-rotateIn {
+  from {
+    opacity: 0;
+    transform: rotate(-3deg) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rfs-tr-flipX {
+  from {
+    opacity: 0;
+    transform: rotateY(90deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rfs-tr-flipY {
+  from {
+    opacity: 0;
+    transform: rotateX(90deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rfs-tr-bounceUp {
+  0% {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-5px);
+  }
+  80% {
+    transform: translateY(3px);
+  }
+  100% {
+    transform: none;
+  }
+}
+
+/* --- Переходы страниц (флаг + класс анимации) ------------------------ */
+
+html[data-rfs-transition="fade"] #top.p-pageWrapper.rfs-tr-enter {
+  animation: rfs-tr-fade var(--rfs-tr-duration, 400ms) ease both;
+}
+
+html[data-rfs-transition="slideUp"] #top.p-pageWrapper.rfs-tr-enter {
+  animation: rfs-tr-slideUp var(--rfs-tr-duration, 400ms) cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+
+html[data-rfs-transition="fadeDown"] #top.p-pageWrapper.rfs-tr-enter {
+  animation: rfs-tr-fadeDown var(--rfs-tr-duration, 400ms) cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+
+html[data-rfs-transition="slideLeft"] #top.p-pageWrapper.rfs-tr-enter {
+  animation: rfs-tr-slideLeft var(--rfs-tr-duration, 400ms) cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+
+html[data-rfs-transition="slideRight"] #top.p-pageWrapper.rfs-tr-enter {
+  animation: rfs-tr-slideRight var(--rfs-tr-duration, 400ms) cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+
+html[data-rfs-transition="scale"] #top.p-pageWrapper.rfs-tr-enter {
+  animation: rfs-tr-scale var(--rfs-tr-duration, 400ms) cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+
+html[data-rfs-transition="zoomOut"] #top.p-pageWrapper.rfs-tr-enter {
+  animation: rfs-tr-zoomOut var(--rfs-tr-duration, 400ms) cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+
+html[data-rfs-transition="rotateIn"] #top.p-pageWrapper.rfs-tr-enter {
+  animation: rfs-tr-rotateIn var(--rfs-tr-duration, 400ms) cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+
+html[data-rfs-transition="flipX"] #top.p-pageWrapper.rfs-tr-enter {
+  perspective: 1200px;
+  animation: rfs-tr-flipX var(--rfs-tr-duration, 400ms) cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+
+html[data-rfs-transition="flipY"] #top.p-pageWrapper.rfs-tr-enter {
+  perspective: 1200px;
+  animation: rfs-tr-flipY var(--rfs-tr-duration, 400ms) cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+
+html[data-rfs-transition="bounceUp"] #top.p-pageWrapper.rfs-tr-enter {
+  animation: rfs-tr-bounceUp var(--rfs-tr-duration, 400ms) ease-out both;
+}
+
+html[data-rfs-transition="blur"] #top.p-pageWrapper.rfs-tr-enter {
+  animation: rfs-tr-blur var(--rfs-tr-duration, 400ms) ease-out both;
+}
+
+/* Каскад: анимируются прямые дети #top; задержки (animation-delay)
+   модуль пишет инлайново, инлайн-стиль перебивает нашу шортенд-
+   нулевую задержку. Слои фона/эффектов исключены. */
+html[data-rfs-transition="cascade"] #top.p-pageWrapper.rfs-tr-cascade > *:not(#rfs-bg-layer):not(#rfs-bg-overlay):not(#rfs-fx-canvas) {
+  animation: rfs-tr-cascadeIn var(--rfs-tr-duration, 400ms) cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+
+/* --- Свечение (data-rfs-fx-glow) -------------------------------------- */
+
+@media (hover: hover) {
+  html[data-rfs-fx-glow] a:hover {
+    text-shadow: 0 0 10px var(--rfs-primary-soft);
+  }
+
+  html[data-rfs-fx-glow] .p-navEl-link:hover {
+    text-shadow: 0 0 10px var(--rfs-primary-soft);
+  }
+}
+
+html[data-rfs-fx-glow] .button--primary {
+  box-shadow: 0 2px 10px rgb(var(--rfs-primary-rgb) / 0.4),
+    0 0 18px rgb(var(--rfs-primary-rgb) / 0.28) !important;
+}
+
+/* --- Анимированный градиент (data-rfs-fx-gradient) -------------------- */
+
+html[data-rfs-fx-gradient] {
+  background-image: linear-gradient(
+    125deg,
+    var(--rfs-page-bg) 0%,
+    var(--rfs-page-bg-2) 32%,
+    rgb(var(--rfs-primary-rgb) / 0.07) 55%,
+    var(--rfs-page-bg-2) 78%,
+    var(--rfs-page-bg) 100%
+  ) !important;
+  background-size: 300% 300% !important;
+  animation: rfs-gradient-drift 24s ease-in-out infinite;
+}
+
+@keyframes rfs-gradient-drift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* --- Подъём карточек при наведении (data-rfs-fx-lift) ------------------ */
+
+@media (hover: hover) {
+  html[data-rfs-fx-lift]:not([data-rfs-reduced-motion]) .block-container,
+  html[data-rfs-fx-lift]:not([data-rfs-reduced-motion]) .message,
+  html[data-rfs-fx-lift]:not([data-rfs-reduced-motion]) .structItem {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  html[data-rfs-fx-lift]:not([data-rfs-reduced-motion]) .block-container:hover,
+  html[data-rfs-fx-lift]:not([data-rfs-reduced-motion]) .message:hover,
+  html[data-rfs-fx-lift]:not([data-rfs-reduced-motion]) .structItem:hover {
+    box-shadow: 0 10px 24px -8px var(--rfs-shadow-2),
+      0 0 0 1px rgb(var(--rfs-border-rgb) / 0.4) !important;
+    transform: translateY(-2px);
+  }
+}
+
+/* --- Кроссфейд темы ------------------------------------------------------ */
+
+/* Плавная смена фона при переключении темы. */
+html[data-rfs-crossfade] {
+  transition: background-color 0.25s ease, background-image 0.25s ease;
+}
+
+/* Транзиентная вуаль: рантайм кратко ставит data-rfs-crossfade-flash,
+   псевдоэлемент гасит вспышку смены палитры. */
+html[data-rfs-crossfade-flash]::after {
+  animation: rfs-veil 450ms ease-out both;
+  background: var(--rfs-page-bg);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: fixed;
+  z-index: 2147483000;
+}
+
+@keyframes rfs-veil {
+  0% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* --- Кнопка паузы (pauseButtonModule) ---------------------------------- *
+ * Позиционирование модуль ставит инлайном (владение: модуль), здесь —
+ * только цвета, ховер и фокус в переменных темы (владение: стили).        */
+
+.rfs-pause {
+  align-items: center;
+  background: var(--rfs-surface-alt, #232327);
+  border: 1px solid var(--rfs-border-strong, #3c3c44);
+  border-radius: var(--rfs-radius-sm, 6px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  color: var(--rfs-text-muted, #a3a3ad);
+  cursor: pointer;
+  display: inline-flex;
+  height: 34px;
+  justify-content: center;
+  padding: 0;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  width: 34px;
+}
+
+.rfs-pause:hover {
+  background: var(--rfs-surface-hover, #2a2a30);
+  color: var(--rfs-text, #ececf1);
+}
+
+.rfs-pause:focus-visible {
+  outline: 2px solid var(--rfs-primary, #d9204f);
+  outline-offset: 2px;
+}

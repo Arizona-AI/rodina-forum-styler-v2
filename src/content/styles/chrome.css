@@ -1,0 +1,444 @@
+/* ============================================================
+   chrome.css — «хром» страницы: верхняя панель, боковое меню,
+   ссылки разделов, поиск, группы аккаунта, выпадающие меню,
+   мобильный off-canvas, хлебные крошки, шапка страницы,
+   сайдбар, футер, уведомления, пагинация, фильтры, кнопки
+   прокрутки, тултипы.
+   ============================================================ */
+
+/* --- Верхняя панель (.p-navTop, стоковый .p-header) ---------------- */
+
+.p-navTop,
+.p-header {
+  background: var(--rfs-header-bg) !important;
+  border-bottom: 1px solid var(--rfs-border) !important;
+  color: var(--rfs-text) !important;
+}
+
+.p-navTop .p-nav-menuTrigger,
+.p-header .p-nav-menuTrigger {
+  color: var(--rfs-text) !important;
+  background: transparent !important;
+  border-color: transparent !important;
+  border-radius: var(--rfs-radius-sm) !important;
+}
+
+@media (hover: hover) {
+  .p-navTop .p-nav-menuTrigger:hover {
+    background: var(--rfs-hover-overlay) !important;
+    color: var(--rfs-link) !important;
+  }
+}
+
+.p-header-logo,
+.p-header-logo a {
+  color: var(--rfs-text) !important;
+}
+
+/* --- Поиск --------------------------------------------------------- */
+
+.p-search,
+.p-nav-search {
+  color: var(--rfs-text-muted) !important;
+}
+
+.p-search a,
+.p-nav-search a,
+.p-search .p-searchTrigger {
+  color: var(--rfs-text-muted) !important;
+}
+
+@media (hover: hover) {
+  .p-search a:hover,
+  .p-nav-search a:hover {
+    color: var(--rfs-link) !important;
+  }
+}
+
+/* --- Группы аккаунта / уведомлений (.p-nav-opposite) ---------------- */
+
+.p-nav-opposite,
+.p-navGroups {
+  color: var(--rfs-text) !important;
+}
+
+.p-navgroup {
+  background: rgb(var(--rfs-surface-rgb) / 0.55) !important;
+  border: 1px solid var(--rfs-border) !important;
+  border-radius: var(--rfs-radius-sm) !important;
+  color: var(--rfs-text) !important;
+}
+
+.p-navgroup-link,
+.p-navgroup-trigger,
+.p-navgroup .p-navgroup-link {
+  color: var(--rfs-text-muted) !important;
+}
+
+@media (hover: hover) {
+  .p-navgroup-link:hover,
+  .p-navgroup-trigger:hover {
+    background: var(--rfs-hover-overlay) !important;
+    color: var(--rfs-link) !important;
+  }
+}
+
+/* --- Боковое меню и ссылки разделов -------------------------------- */
+
+.p-sideNav {
+  background: var(--rfs-sidebar-bg) !important;
+  border-right: 1px solid var(--rfs-border) !important;
+  color: var(--rfs-text-muted) !important;
+}
+
+nav.p-nav,
+.p-navSticky nav.p-nav {
+  background: transparent !important;
+  color: var(--rfs-text-muted) !important;
+}
+
+.p-navEl-link,
+.p-nav-list a {
+  color: var(--rfs-text-muted) !important;
+  border-radius: var(--rfs-radius-sm) !important;
+  background: transparent !important;
+}
+
+@media (hover: hover) {
+  .p-navEl-link:hover,
+  .p-nav-list a:hover {
+    background: var(--rfs-hover-overlay) !important;
+    color: var(--rfs-link) !important;
+  }
+}
+
+.p-navEl.is-active .p-navEl-link,
+.p-navEl--active .p-navEl-link,
+.p-navEl.is-selected .p-navEl-link,
+.p-nav-list .is-active > a {
+  color: var(--rfs-link) !important;
+  background: rgb(var(--rfs-primary-rgb) / 0.1) !important;
+}
+
+.p-sectionLinks {
+  border-color: var(--rfs-border) !important;
+  color: var(--rfs-text-muted) !important;
+}
+
+.p-sectionLinks a {
+  color: var(--rfs-text-muted) !important;
+}
+
+@media (hover: hover) {
+  .p-sectionLinks a:hover {
+    color: var(--rfs-link) !important;
+  }
+}
+
+/* --- Выпадающие меню (.menu--structural и пр.) ---------------------- */
+
+.menu > .menu-content,
+.menu .menu-content {
+  background: var(--rfs-surface) !important;
+  border: 1px solid var(--rfs-border) !important;
+  border-radius: var(--rfs-radius-md) !important;
+  box-shadow: var(--rfs-shadow-3) !important;
+  color: var(--rfs-text) !important;
+}
+
+.menu .menu-linkRow,
+.menu a.menu-linkRow {
+  color: var(--rfs-text) !important;
+  border-radius: var(--rfs-radius-sm) !important;
+}
+
+@media (hover: hover) {
+  .menu .menu-linkRow:hover {
+    background: var(--rfs-hover-overlay) !important;
+    color: var(--rfs-link) !important;
+  }
+}
+
+.menu .menu-separator {
+  border-color: var(--rfs-border) !important;
+}
+
+.menu .menu-title,
+.menu .menu-header {
+  color: var(--rfs-text-faint) !important;
+}
+
+.menu .menu-check {
+  color: var(--rfs-primary) !important;
+}
+
+/* --- Мобильный выдвижной ящик (off-canvas) -------------------------- */
+
+.offCanvasMenu,
+.offCanvasMenu-content {
+  background: var(--rfs-surface) !important;
+  color: var(--rfs-text) !important;
+}
+
+.offCanvasMenu-content {
+  border-color: var(--rfs-border) !important;
+}
+
+.offCanvasMenu-backdrop {
+  background: rgb(var(--rfs-text-rgb) / 0.45) !important;
+}
+
+.offCanvasMenu-content a:not(.button),
+.offCanvasMenu-content .p-navEl-link,
+.offCanvasMenu-content .menu-linkRow {
+  color: var(--rfs-text-muted) !important;
+}
+
+@media (hover: hover) {
+  .offCanvasMenu-content a:not(.button):hover,
+  .offCanvasMenu-content .p-navEl-link:hover,
+  .offCanvasMenu-content .menu-linkRow:hover {
+    color: var(--rfs-link) !important;
+    background: var(--rfs-hover-overlay) !important;
+  }
+}
+
+/* --- Хлебные крошки -------------------------------------------------- */
+
+.p-breadcrumbs-item {
+  color: var(--rfs-text-faint) !important;
+}
+
+.p-breadcrumbs-item:last-child,
+.p-breadcrumbs-item.is-active,
+.p-breadcrumbs-item[aria-current="page"] {
+  color: var(--rfs-text) !important;
+}
+
+.p-breadcrumbs a {
+  color: var(--rfs-text-muted) !important;
+}
+
+@media (hover: hover) {
+  .p-breadcrumbs a:hover {
+    color: var(--rfs-link-hover) !important;
+  }
+}
+
+.p-breadcrumbs-divider,
+.p-breadcrumbs-item + .p-breadcrumbs-item::before {
+  color: var(--rfs-text-faint) !important;
+}
+
+/* --- Шапка страницы: заголовок и описание ---------------------------- */
+
+.p-body-header {
+  border-bottom: 1px solid rgb(var(--rfs-border-rgb) / 0.6) !important;
+  color: var(--rfs-text) !important;
+}
+
+.p-title {
+  color: var(--rfs-text) !important;
+  font-weight: 700;
+}
+
+.p-description {
+  color: var(--rfs-text-muted) !important;
+}
+
+.p-description a {
+  color: var(--rfs-link) !important;
+}
+
+@media (hover: hover) {
+  .p-description a:hover {
+    color: var(--rfs-link-hover) !important;
+  }
+}
+
+/* --- Сайдбар контента ------------------------------------------------ */
+
+.p-body-sidebar {
+  color: var(--rfs-text-muted) !important;
+}
+
+.p-body-sidebar a:not(.button):not(.username) {
+  color: var(--rfs-text-muted) !important;
+}
+
+@media (hover: hover) {
+  .p-body-sidebar a:not(.button):not(.username):hover {
+    color: var(--rfs-link) !important;
+  }
+}
+
+/* --- Футер ------------------------------------------------------------ */
+
+.p-footer {
+  background: var(--rfs-footer-bg) !important;
+  border-top: 1px solid var(--rfs-border) !important;
+  color: var(--rfs-text-muted) !important;
+}
+
+.p-footer a {
+  color: var(--rfs-text-muted) !important;
+}
+
+@media (hover: hover) {
+  .p-footer a:hover {
+    color: var(--rfs-link) !important;
+  }
+}
+
+.p-footer .p-footer-copyright,
+.p-footer-small {
+  color: var(--rfs-text-faint) !important;
+}
+
+/* --- Уведомления (.notice) и блок-сообщения (.blockMessage) ---------- */
+
+.notice {
+  background: rgb(var(--rfs-primary-rgb) / 0.1) !important;
+  border: 1px solid rgb(var(--rfs-primary-rgb) / 0.35) !important;
+  border-radius: var(--rfs-radius-md) !important;
+  color: var(--rfs-text) !important;
+}
+
+.notice a {
+  color: var(--rfs-link) !important;
+}
+
+.notice--success {
+  background: var(--rfs-success-soft) !important;
+  border-color: var(--rfs-success) !important;
+}
+
+.notice--warning {
+  background: rgb(var(--rfs-surface-alt-rgb) / 0.85) !important;
+  border-color: var(--rfs-warning) !important;
+}
+
+.notice--info {
+  background: rgb(var(--rfs-surface-alt-rgb) / 0.85) !important;
+  border-color: var(--rfs-info) !important;
+}
+
+.notice--error,
+.notice--danger {
+  background: var(--rfs-danger-soft) !important;
+  border-color: var(--rfs-danger) !important;
+}
+
+.blockMessage {
+  background: rgb(var(--rfs-surface-alt-rgb) / 0.75) !important;
+  border: 1px solid var(--rfs-border) !important;
+  border-radius: var(--rfs-radius-md) !important;
+  box-shadow: var(--rfs-shadow-1) !important;
+  color: var(--rfs-text) !important;
+}
+
+.blockMessage a {
+  color: var(--rfs-link) !important;
+}
+
+.blockMessage--error {
+  border-color: var(--rfs-danger) !important;
+}
+
+.blockMessage--warning {
+  border-color: var(--rfs-warning) !important;
+}
+
+.blockMessage--success {
+  border-color: var(--rfs-success) !important;
+}
+
+/* --- Пагинация -------------------------------------------------------- */
+
+.pageNavWrapper,
+.pageNav,
+.pageNavSimple {
+  color: var(--rfs-text-muted) !important;
+}
+
+.pageNav a,
+.pageNavSimple a,
+.pageNav-jump,
+.pageNavSimple .pageNav-jump {
+  color: var(--rfs-text-muted) !important;
+  background: rgb(var(--rfs-surface-rgb) / 0.6) !important;
+  border: 1px solid var(--rfs-border) !important;
+  border-radius: var(--rfs-radius-sm) !important;
+}
+
+@media (hover: hover) {
+  .pageNav a:hover,
+  .pageNavSimple a:hover,
+  .pageNav-jump:hover {
+    background: var(--rfs-primary-soft) !important;
+    color: var(--rfs-primary) !important;
+    border-color: rgb(var(--rfs-primary-rgb) / 0.4) !important;
+  }
+}
+
+.pageNav-page--current,
+.pageNav-page--current a,
+.pageNavSimple .pageNav-current {
+  background: var(--rfs-primary) !important;
+  color: var(--rfs-primary-fg) !important;
+  border-color: var(--rfs-primary) !important;
+}
+
+.pageNavWrapper .pageNav-page--current,
+.pageNavWrapper .pageNav-page--current a {
+  font-weight: 600;
+}
+
+/* --- Панель фильтров ---------------------------------------------------- */
+
+.filterBar,
+.block-filterBar {
+  color: var(--rfs-text-muted) !important;
+  border-color: var(--rfs-border) !important;
+}
+
+.filterBar a,
+.block-filterBar a {
+  color: var(--rfs-text-muted) !important;
+}
+
+@media (hover: hover) {
+  .filterBar a:hover,
+  .block-filterBar a:hover {
+    color: var(--rfs-link) !important;
+  }
+}
+
+/* --- Кнопки прокрутки (фиксированные) --------------------------------- */
+
+.u-scrollButtons > *,
+.u-navButtons > * {
+  background: var(--rfs-surface) !important;
+  color: var(--rfs-text) !important;
+  border: 1px solid var(--rfs-border) !important;
+  border-radius: var(--rfs-radius-sm) !important;
+  box-shadow: var(--rfs-shadow-2) !important;
+}
+
+@media (hover: hover) {
+  .u-scrollButtons > *:hover,
+  .u-navButtons > *:hover {
+    background: var(--rfs-surface-hover) !important;
+    color: var(--rfs-link) !important;
+  }
+}
+
+/* --- Тултипы ------------------------------------------------------------- */
+
+.tooltip {
+  background: var(--rfs-surface) !important;
+  color: var(--rfs-text) !important;
+  border: 1px solid var(--rfs-border) !important;
+  border-radius: var(--rfs-radius-sm) !important;
+  box-shadow: var(--rfs-shadow-2) !important;
+}
